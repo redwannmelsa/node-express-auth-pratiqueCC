@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <title>signup page</title>
+</head>
+
+<body>
+  <section class="prompt">
+    <h1>sign Up</h1>
+    <form action="signup" method="post">
+      <section>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autocomplete="username" required>
+      </section>
+      <section>
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" autocomplete="new-password" required>
+      </section>
+      <button type="submit">Sign Up</button>
+    </form>
+    <hr>
+    <p class="help">Already have an account? <a href="/login">Sign In</a></p>
+  </section>
+  <footer class="info">
+    <p>Created by <a href="">Saikou B</a></p>
+    <p>Cloud Campus Course</p>
+    <p>Authentication powered by <a href="">Passport JS</a></p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <title>Index :: Auth exercice course</title>
+</head>
+
+<body>
+  <section class="todoapp">
+    <nav class="nav">
+      <ul>
+        <li class="user">
+          <%= user.name.givenName || user.name.familyName || user.username || user.name || user.email %>
+        </li>
+        <li>
+          <form action="/logout" method="post">
+            <button type="submit" class="logout">Sign out</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+    <header class="header">
+      <h1>(Exercice App)</h1>
+      <form action="/" method="POST">
+        <input type="text" class="new-todo" name="title" placeholder="add a new task">
+        <input name="filter" type="hidden" value="">
+      </form>
+    </header>
+    <% if(activeCount + completedCount> 0) { %>
+      <section class="main">
+        <form action="/toggle-all" method="POST">
+          <input id="toggle-all" class="toggle-all" type="checkbox" name="completed" <%=activeCount==0 ? 'checked' : ''
+            %> onchange="this.form.submit();">
+          <label for="toggle-all">Mark all as complete</label>
+        </form>
+        <ul class="todo-list">
+          <% exer.forEach(function(todo) { %>
+            <li class="<%= todo.completed ? 'completed' : '' %>">
+              <div class="view">
+                <form action="<%= todo.url %>" method="post">
+                  <input class="toggle" type="checkbox" name="completed" <%=todo.completed ? 'checked' : '' %>
+                  onchange="this.form.submit();">
+                  <label ondblclick="this.closest('li').className = this.closest('li').className + ' editing';">
+                    <%= todo.title %>
+                  </label>
+                  <button class="destroy" form="delete-<%= todo.id %>"></button>
+              </div>
+              <input class="edit" name="title" value="<%= todo.title %>"
+                onkeyup="if (event.keyCode == 27) { this.setAttribute('data-esc', ''); this.closest('li').className = this.closest('li').className.replace('editing', ''); }"
+                onblur="if (this.getAttribute('data-esc') == null) { return this.removeAttribute('data-esc'); } this.form.submit();">
+              <% if (filter) { %>
+                <input type="hidden" name="filter" value="<%= filter %>">
+                <% } %>
+                  </form>
+                  <form id="delete-<%= todo.id %>" action="<%= todo.url %>/delete" method="post">
+                    <% if (filter) { %>
+                      <input type="hidden" name="filter" value="<%= filter %>">
+                      <% } %>
+                  </form>
+            </li>
+            <% }) %>
+        </ul>
+      </section>
+      <% } %>
+        <% if (activeCount + completedCount> 0) { %>
+          <footer class="footer">
+            <span class="todo-count"><strong>
+                <%= activeCount %>
+              </strong>
+              <%= pluralize('item', activeCount) %> left
+            </span>
+            <ul class="filters">
+              <li>
+                <a class="<%= !filter ? 'selected' : '' %>" href="/">All</a>
+              </li>
+              <li>
+                <a class="<%= filter == 'active' ? 'selected' : '' %>" href="/active">Active</a>
+              </li>
+              <li>
+                <a class="<%= filter == 'completed' ? 'selected' : '' %>" href="/completed">Completed</a>
+              </li>
+            </ul>
+            <% if (completedCount> 0) { %>
+              <form action="/clear-completed" method="post">
+                <button class="clear-completed">Clear Completed</button>
+                <% if (filter) { %>
+                  <input type="hidden" name="filter" value="<%= filter %>">
+                  <% } %>
+              </form>
+              <% } %>
+          </footer>
+          <% } %>
+
+
+  </section>
+</body>
+
+</html>

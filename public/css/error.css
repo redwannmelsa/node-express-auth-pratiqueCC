@@ -1,0 +1,51 @@
+body{
+    background: rgb(228, 233, 47);
+    background: radial-gradient(circle, rgba(228,233,47,0) 40%, rgba(197,194,249,1) 74%, rgba(0,212,255,1) 100%);
+}
+.todohome{
+    margin: 130px 0 40px 0;
+    position: relative;
+}
+.todohome h1{
+    position:absolute;
+    top:-140px;
+    width: 100%;
+    font-size: 80px;
+    font-weight: 200;
+    text-align: center;
+    color: #b83f45;
+}
+.todohome section{
+    padding-top: 1px;
+    text-align: center;
+}
+.todohome h2{
+    padding-bottom: 48px;
+    font-size: 28px;
+    font-weight: 300;
+}
+.alert{
+    padding: 40px;
+    background-color: #f44366;
+    color: white;
+    margin-bottom: 0px;
+}
+.info{
+    margin: 65px auto 0;
+    color: #4d4d4d;
+    font-size: 11px;
+    font-weight: 200;
+    text-align: center;
+    color: #b83f45;
+}
+.todohome .button{
+    padding: 13px 45px;
+    font-style: 16px;
+    font-weight: 500;
+    color: white;
+    border-radius: 5px;
+    background-color:#d83f45;
+}
+.todohome a.button{
+    text-decoration: none;
+}

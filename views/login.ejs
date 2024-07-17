@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <title>login page</title>
+</head>
+
+<body>
+  <section class="prompt">
+    <h3>exercice app</h3>
+    <h1>Sign in</h1>
+    <hr>
+    <form action="/login/password" method="post">
+      <section>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autocomplete="current-username" required autofocus>
+      </section>
+      <section>
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" autocomplete="current-password" required autofocus>
+      </section>
+      <button type="submit">Sign In</button>
+    </form>
+    <hr>
+    <p><a href="/login/federated/google" class="google button">Sign in with google</a></p>
+    <p><a href="/login/federated/facebook" class="facebook button">Sign in with facebook</a></p>
+    <p class="help">Don't have an account? <a href="/signup">Sign Up</a></p>
+  </section>
+  <footer class="info">
+    <p>Created by <a href="">Saikou B</a></p>
+    <p>Cloud Campus Course</p>
+    <p>Authentication powered by <a href="">Passport JS</a></p>
+  </footer>
+</body>
+
+</html>
